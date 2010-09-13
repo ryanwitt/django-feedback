@@ -10,7 +10,7 @@ class Feedback(models.Model):
         ordering = ['-time']
 
     user    = models.ForeignKey(User, blank=True, null=True)
-    type    = models.CharField(choices=settings.FEEDBACK_CHOICES, max_length=100)
+    type    = models.CharField(choices=settings.FEEDBACK_CHOICES, max_length=100, default=settings.FEEDBACK_CHOICES[0][0])
     message = models.TextField()
     time    = models.DateTimeField(auto_now_add=True)
 
