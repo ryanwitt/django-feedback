@@ -4,16 +4,16 @@ from django.core.urlresolvers import reverse
 from django.conf import settings
 
 class Feedback(models.Model):
-    
+
     class Meta:
-        
+
         ordering = ['-time']
-    
-    user    = models.ForeignKey(User)
+
+    user    = models.ForeignKey(User, blank=True, null=True)
     type    = models.CharField(choices=settings.FEEDBACK_CHOICES, max_length=100)
     message = models.TextField()
     time    = models.DateTimeField(auto_now_add=True)
-    
+
     def __unicode__(self):
         return self.message
 
