@@ -1,0 +1,1 @@
+{{settings.EMAIL_SUBJECT_PREFIX}}{{settings.FEEDBACK_SUBJECT_PREFIX}} - {{ feedback.get_type_display }} #{{feedback.user_specific_id}} from {{ feedback.user.username }} (page: {{feedback.page}})

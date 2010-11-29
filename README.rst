@@ -21,9 +21,38 @@ Also, be sure to include ``feedback.urls`` somewhere in your urls.py file.
 Add ``feedback.context_processors.feedback_form`` to ``TEMPLATE_CONTEXT_PROCESSORS``, and
 ``feedback_form`` will be in the context for all authenticated users.
 
+Email Feedback
+==============
+
+If you want to recieve an email when a user leaves feedback, add the following
+to your settings file::
+
+    FEEDBACK_SENDS_EMAIL = True
+
+The Reply-To address is set to the user's email so you can quickly respond.
+
+By default, this sends feedback emails to everybody in ``ADMINS``, but you can
+change this if you want::
+
+    FEEDBACK_RECIPIENTS = MANAGERS
+    # or explicitly
+    FEEDBACK_RECIPIENTS = (
+        ('Django Pony', 'pony@example.com'),
+        ('Joe Schmoe', 'joe@example.com'),
+    )
+
+In addition to your usual ``EMAIL_SUBJECT_PREFIX``, feedback adds its own
+prefix, ``FEEDBACK_SUBJECT_PREFIX`` which defaults to ``[feedback]``.
+
+The templates for feedback emails (which you may override) are:
+
+    feedback/email-subject.txt
+    feedback/email.txt
+
+
 Screenshots
 ===========
-.. image:: http://cloud.github.com/downloads/girasquid/django-feedback/django-feedback-1.PNG
+.. image:: https://cloud.github.com/downloads/girasquid/django-feedback/django-feedback-1.PNG
 
 Overview in your admin index. Allows you to see all feedback current in the system.
 
